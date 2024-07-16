@@ -1,4 +1,4 @@
-package com.example.springsecurityoauth2;
+package com.example.springsecurityoauth2.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;

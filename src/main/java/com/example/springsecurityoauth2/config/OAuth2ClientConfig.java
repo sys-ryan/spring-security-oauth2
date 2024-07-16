@@ -1,4 +1,4 @@
-package com.example.springsecurityoauth2;
+package com.example.springsecurityoauth2.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,15 +17,13 @@ public class OAuth2ClientConfig {
         http.authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
 
-                        .requestMatchers("/home", "/client").permitAll()
+                        .requestMatchers("/", "/oauth2Login", "/client").permitAll()
 
                         .anyRequest().authenticated()
         )
                 .oauth2Client(Customizer.withDefaults())
-
                 ;
 
-        http.logout(logout -> logout.logoutSuccessUrl("/home"));
         return http.build();
     }
 }
