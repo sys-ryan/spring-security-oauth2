@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.client.web.OAuth2AuthorizedClientRepo
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.thymeleaf.util.StringUtils;
 
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
@@ -25,8 +26,8 @@ public class AppConfig {
                 OAuth2AuthorizedClientProviderBuilder.builder()
                         .authorizationCode()
                         .password()
-                        .clientCredentials()
-                        .refreshToken()
+                        .clientCredentials(clientCredentialsGrantBuilder -> clientCredentialsGrantBuilder.clockSkew(Duration.ofSeconds(3600)))
+                        .refreshToken(refreshTokenGrantBuilder -> refreshTokenGrantBuilder.clockSkew(Duration.ofSeconds(3600)))
                         .build();
 
         DefaultOAuth2AuthorizedClientManager oAuth2AuthorizedClientManager =

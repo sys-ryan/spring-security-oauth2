@@ -29,6 +29,7 @@ public class ClientController {
     @Autowired
     private OAuth2AuthorizedClientService oAuth2AuthorizedClientService;
 
+
     @GetMapping("/client")
     public String client(HttpServletRequest request, Model model) {
 
@@ -59,4 +60,5 @@ public class ClientController {
 
         return "client";
     }
+
 }
